@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+// import du JSON
+import logements from './data/logements.json'
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -25,6 +28,17 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
+
+      {/*  affichage des logements */}
+      <h2>Liste des logements :</h2>
+      <ul>
+        {logements.map((logement) => (
+          <li key={logement.id}>
+            <strong>{logement.titre}</strong> – {logement.localisation}
+          </li>
+        ))}
+      </ul>
+
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
