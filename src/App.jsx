@@ -1,49 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-// import du JSON
-import logements from './data/logements.json'
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home.jsx";
+import About from "./pages/About/About.jsx";
+import Error from "./pages/Error/Error.jsx";
+import Accomodation from "./pages/Lodgment/Lodgment.jsx";
+import Layout from "./components/Layout/Layout.jsx";
+import Header from "./components/Header/Header.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-
-      {/*  affichage des logements */}
-      <h2>Liste des logements :</h2>
-      <ul>
-        {logements.map((logement) => (
-          <li key={logement.id}>
-            <strong>{logement.titre}</strong> – {logement.localisation}
-          </li>
-        ))}
-      </ul>
-
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Layout header={<Header />} footer={<Footer />}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/a-propos" element={<About />} />
+        <Route path="/logement/:id" element={<Accomodation />} />
+        <Route path="/*" element={<Error />} />
+      </Routes>
+    </Layout>
+  );
 }
 
-export default App
+export default App;
