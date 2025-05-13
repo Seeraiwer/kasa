@@ -38,21 +38,77 @@ body {
 
 // ===== Conteneur central responsive =====
 
-.spacer {
-  flex: 1;
-  margin-inline: 100px;
+// ===== Réinitialisation de base =====
 
-  // Centrage et largeur fixe sur écrans larges
-  @media screen and (min-width: 1440px) {
-    width: 1240px;
-    margin-inline: auto;
+// Prend toute la hauteur de la page
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+// Supprime les marges par défaut des titres et paragraphes
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+// Point d’ancrage principal React (structure en colonne verticale)
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+// ===== Style global du body =====
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+// ===== Messages d’erreur visuels =====
+
+.error {
+  color: red;
+  font-size: 14px;
+  background-color: rgba(255, 0, 0, 0.127);
+  border: red 1px solid;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+// ===== Animation de chargement circulaire =====
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #ff6060;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-
-  // Marges réduites sur mobile/tablette
-  @media screen and (max-width: 768px) {
-    margin-inline: 20px;
+  to {
+    transform: rotate(360deg);
   }
 }
+
 
 // ===== Messages d’erreur visuels =====
 

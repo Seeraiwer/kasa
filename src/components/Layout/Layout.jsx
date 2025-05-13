@@ -1,13 +1,22 @@
-// src/components/Layout.jsx
-const Layout = ({ header, footer, children }) => {
-    return (
-      <div className="layout">
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>{footer}</footer>
+import Header from "../Header/Header.jsx";
+import Footer from "../Footer/Footer.jsx";
+import { Outlet } from "react-router-dom";
+
+/**
+ * Composant Layout — structure globale de toutes les pages :
+ * contient Header + Footer + conteneur centré (.spacer) où
+ * s'affichent les pages dynamiquement via <Outlet />.
+ */
+function Layout() {
+  return (
+    <>
+      <Header />
+      <div className="spacer">
+        <Outlet />
       </div>
-    );
-  };
-  
-  export default Layout;
-  
+      <Footer />
+    </>
+  );
+}
+
+export default Layout;

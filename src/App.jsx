@@ -1,10 +1,8 @@
-import "./App.scss";         // Import global des styles de l'application
-import Router from "./Router.jsx"; // Composant de routage principal (avec toutes les routes)
+import Router from "./Router.jsx";
+import "./App.scss"; // Assure l'application des styles globaux
 
 /**
- * Composant racine de l'application — encapsule le système de routing.
- *
- * @returns {JSX.Element} L'application avec gestion de la navigation.
+ * Composant racine — encapsule l'application dans la structure de routage.
  */
 function App() {
   return <Router />;
