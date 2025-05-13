@@ -1,0 +1,54 @@
+@import "../../variables/Colors";
+@import "../../variables/Media";
+
+// Variables d’espacement vertical
+$space: 139px;
+$space--mobile: 113px;
+
+.error404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: $main--color;
+  text-align: center;
+
+  gap: $space;              // Espace vertical entre les blocs
+  margin-block: $space;     // Marge haut/bas de la section
+
+  @include respond-to-tablet {
+    gap: $space--mobile;
+    margin-block: $space--mobile;
+  }
+
+  // Titre principal (code 404)
+  h1 {
+    font-size: 288px;
+    font-weight: 700;
+    line-height: 1.05;
+
+    @include respond-to-tablet {
+      font-size: 96px;
+    }
+  }
+
+  // Message explicatif
+  p {
+    font-size: 36px;
+
+    @include respond-to-tablet {
+      font-size: 18px;
+    }
+  }
+
+  // Lien de retour vers l’accueil
+  a {
+    text-decoration: underline;
+    color: #000;
+
+    @include respond-to-tablet {
+      font-size: 14px;
+    }
+  }
+}

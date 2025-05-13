@@ -1,0 +1,48 @@
+@use "../../variables/Colors.scss" as *;
+@use "../../variables/Media.scss" as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 68px;
+  font-weight: 500;
+  margin-block: 45px 50px; // marge verticale entre le haut de page et le contenu
+
+  // Version responsive : réduit la hauteur et les marges
+  @include respond-to-tablet {
+    margin-block: 20px 27px;
+    height: 46.88px;
+
+    // Ajuste la hauteur des liens et images dans le header pour les petits écrans
+    a,
+    img {
+      height: 100%;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    list-style: none;
+    font-size: 24px;
+    gap: 57px; // espacement entre les liens de navigation
+
+    // Responsive : texte en majuscules + réduction des espacements
+    @include respond-to-tablet {
+      gap: 26px;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    // Cible les liens dans la navigation
+    & a {
+      text-decoration: none;
+      color: #000;
+
+      // Ajoute un soulignement sur le lien actif (via NavLink)
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,23 +1,13 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home.jsx";
-import About from "./pages/About/About.jsx";
-import Error from "./pages/Error/Error.jsx";
-import Accomodation from "./pages/Lodgment/Lodgment.jsx";
-import Layout from "./components/Layout/Layout.jsx";
-import Header from "./components/Header/Header.jsx";
-import Footer from "./components/Footer/Footer.jsx";
+import "./App.scss";         // Import global des styles de l'application
+import Router from "./Router.jsx"; // Composant de routage principal (avec toutes les routes)
 
+/**
+ * Composant racine de l'application — encapsule le système de routing.
+ *
+ * @returns {JSX.Element} L'application avec gestion de la navigation.
+ */
 function App() {
-  return (
-    <Layout header={<Header />} footer={<Footer />}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/a-propos" element={<About />} />
-        <Route path="/logement/:id" element={<Accomodation />} />
-        <Route path="/*" element={<Error />} />
-      </Routes>
-    </Layout>
-  );
+  return <Router />;
 }
 
 export default App;

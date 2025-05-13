@@ -1,35 +1,100 @@
-// src/pages/Lodgment/Lodgment.jsx
-import { useParams, Navigate } from "react-router-dom";
-import logements from "../../data/logements.json";
+import Collapse from "@components/Collapse/Collapse";
+import Rating from "@components/Rating/Rating";
+import Slideshow from "@components/Slider/Slider";
+import { useFetch } from "@hooks/useFetch.js";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import "./Lodgment.scss";
 
-const Lodgment = () => {
-  const { id } = useParams();
+// URL vers le fichier JSON contenant les logements
+const LOGEMENTS__PATH = "/data/logements.json";
 
-  // Recherche du logement correspondant
-  const logement = logements.find((item) => item.id === id);
+/**
+ * Page de logement individuel — affiche les informations détaillées
+ * d'un logement en fonction de son `id` présent dans l'URL.
+ */
+function Lodgment() {
+  const { id } = useParams(); // Récupère l'identifiant dans l'URL
+  const navigate = useNavigate();
+  const { loading, data: logements, error } = useFetch(LOGEMENTS__PATH);
+  const [logement, setLogement] = useState(null);
 
-  // Si aucun logement trouvé, rediriger vers la page d’erreur
-  if (!logement) {
-    return <Navigate to="/404" />;
-  }
+  // Recherche du logement correspondant une fois les données chargées
+  useEffect(() => {
+    if (logements) {
+      const foundLogement = logements.find((logement) => logement.id === id);
+      if (foundLogement) {
+        setLogement(foundLogement);
+      } else {
+        navigate("/404"); // Redirection vers page 404 si logement introuvable
+      }
+    }
+  }, [logements, id, navigate]);
+
+  if (loading) return <div className="loader" aria-label="Chargement..."></div>;
+  if (error) return <div className="error">Erreur : {error.message}</div>;
+  if (!logement) return null;
 
   return (
-    <section>
-      <h1>{logement.titre}</h1>
-      <p>{logement.localisation}</p>
-      <img
-        src={logement.cover}
-        alt={`Illustration du logement ${logement.titre}`}
-        style={{ width: "100%", maxWidth: "600px" }}
-      />
-      <p>{logement.description}</p>
-      <ul>
-        {logement.equipements.map((equipement, index) => (
-          <li key={index}>{equipement}</li>
-        ))}
-      </ul>
-    </section>
+    <main>
+      <section className="estate">
+        {/* Carrousel d’images du logement */}
+        <Slideshow images={logement.pictures} title={logement.title} />
+
+        {/* Informations principales du logement */}
+        <div className="container">
+          <div className="left">
+            <h1 className="estate-title">{logement.title}</h1>
+            <p className="estate-location">{logement.location}</p>
+            <div className="tags">
+              {logement.tags.map((tag, index) => (
+                <span className="tag" key={index}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="right">
+            {/* Informations sur l'hôte avec nom sur plusieurs lignes */}
+            <div className="host">
+              <p>{addBrToString(logement.host.name)}</p>
+              <img src={logement.host.picture} alt={`Hôte : ${logement.host.name}`} />
+            </div>
+
+            {/* Affichage de la note en étoiles */}
+            <Rating rating={logement.rating} />
+          </div>
+        </div>
+
+        {/* Sections repliables (description + équipements) */}
+        <div className="collapses">
+          <Collapse title="Description">{logement.description}</Collapse>
+          <Collapse title="Équipements">
+            {logement.equipments.map((equipment, index) => (
+              <p key={index}>{equipment}</p>
+            ))}
+          </Collapse>
+        </div>
+      </section>
+    </main>
   );
-};
+}
+
+/**
+ * Utilitaire permettant de forcer un saut de ligne entre chaque mot.
+ * Exemple : "Jean Dupont" → "Jean<br/>Dupont"
+ *
+ * @param {string} string - Nom à formater.
+ * @returns {React.Fragment[]} - Liste de fragments React séparés par des sauts de ligne.
+ */
+function addBrToString(string) {
+  return string.split(" ").map((word, index, array) => (
+    <React.Fragment key={index}>
+      {word}
+      {index < array.length - 1 && <br />}
+    </React.Fragment>
+  ));
+}
 
 export default Lodgment;

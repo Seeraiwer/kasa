@@ -1,13 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter as Router } from "react-router-dom";
-import ".index.scss";
-import App from "./App";
+import App from "./App.jsx"; // Composant racine de l'application
 
+/**
+ * Point d'entrée principal de l'application React.
+ */
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <App />
   </StrictMode>
 );
