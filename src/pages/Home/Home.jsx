@@ -4,7 +4,6 @@ import Card from "@components/Card/Card";
 import { useFetch } from "@hooks/useFetch.js";
 import "./Home.scss";
 
-// Chemin vers le fichier JSON des logements
 const LOGEMENTS__PATH = "/data/logements.json";
 
 /**

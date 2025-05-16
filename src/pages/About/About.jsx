@@ -6,8 +6,6 @@ import "./About.scss";
 /**
  * Page À propos — présente les valeurs fondamentales de Kasa sous forme de sections déroulantes.
  *
- * Affiche une bannière statique suivie de plusieurs blocs `Collapse` explicatifs.
- *
  * @returns {JSX.Element} La page "À propos" complète.
  */
 function About() {

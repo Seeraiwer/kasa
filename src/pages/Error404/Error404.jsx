@@ -4,8 +4,6 @@ import "./Error404.scss";
 /**
  * Composant Error404 — affiché lorsqu’une route invalide est appelée.
  *
- * Affiche un message d'erreur 404 et un lien de retour à la page d’accueil.
- *
  * @returns {JSX.Element} Une page d’erreur utilisateur.
  */
 function Error404() {
