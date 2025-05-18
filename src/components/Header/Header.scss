@@ -2,22 +2,28 @@
 @use "../../variables/Media.scss" as *;
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 68px;
-  font-weight: 500;
-  margin-block: 45px 50px; // marge verticale entre le haut de page et le contenu
+  width: 100%;
+  margin-block: 45px 50px;
 
-  // Version responsive : réduit la hauteur et les marges
+  // Responsive : réduit la hauteur du header
   @include respond-to-tablet {
     margin-block: 20px 27px;
-    height: 46.88px;
+  }
 
-    // Ajuste la hauteur des liens et images dans le header pour les petits écrans
-    a,
-    img {
-      height: 100%;
+  // Appliquer le layout flex à la div .spacer
+  .spacer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 68px;
+
+    @include respond-to-tablet {
+      height: 46.88px;
+
+      a,
+      img {
+        height: 100%;
+      }
     }
   }
 
@@ -25,21 +31,18 @@
     display: flex;
     list-style: none;
     font-size: 24px;
-    gap: 57px; // espacement entre les liens de navigation
+    gap: 57px;
 
-    // Responsive : texte en majuscules + réduction des espacements
     @include respond-to-tablet {
       gap: 26px;
       text-transform: uppercase;
       font-size: 12px;
     }
 
-    // Cible les liens dans la navigation
     & a {
       text-decoration: none;
       color: #000;
 
-      // Ajoute un soulignement sur le lien actif (via NavLink)
       &.active {
         text-decoration: underline;
       }

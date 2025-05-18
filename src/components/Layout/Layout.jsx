@@ -11,12 +11,15 @@ function Layout() {
   return (
     <>
       <Header />
-      <div className="spacer">
-        <Outlet />
-      </div>
+      <main className="main">
+        <div className="spacer">
+          <Outlet />
+        </div>
+      </main>
       <Footer />
     </>
   );
 }
+
 
 export default Layout;
