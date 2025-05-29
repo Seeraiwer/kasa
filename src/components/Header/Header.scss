@@ -58,12 +58,10 @@
     color: black;
     text-decoration: none;
 
-    // Encapsule le texte
     span {
       display: inline-block;
       position: relative;
 
-      // Trait sous le mot actif
       &::after {
         content: "";
         position: absolute;
@@ -76,12 +74,10 @@
       }
     }
 
-    // Affiche le trait seulement si NavLink est actif
     &.active span::after {
       display: block;
     }
 
-    // lien inactif : cache le soulignement
     &:not(.active) span::after {
       display: none;
     }

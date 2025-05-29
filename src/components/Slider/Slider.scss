@@ -3,7 +3,7 @@
 
 .slideshow {
   position: relative;
-  aspect-ratio: 3;              // Ratio large par défaut (ex: paysage)
+  aspect-ratio: 3; 
   width: 100%;
   color: white;
   align-self: center;
@@ -11,7 +11,6 @@
   overflow: hidden;
   margin-bottom: 30px;
 
-  // Conteneur des images dans le carrousel
   .images {
     display: flex;
     height: 100%;
@@ -21,23 +20,20 @@
       aspect-ratio: 3;
       width: 100%;
       flex-shrink: 0;
-      object-fit: cover; // L’image remplit le conteneur sans déformation
+      object-fit: cover; 
 
-      // Adaptation du ratio pour les écrans plus petits
       @include respond-to-tablet {
         aspect-ratio: 1.4;
       }
     }
   }
 
-  // Responsive global sur la boîte de slideshow
   @include respond-to-tablet {
     aspect-ratio: 1.4;
     margin-bottom: 15px;
   }
 }
 
-// Index actuel de la slide (ex: "2 / 5")
 .slide-index {
   position: absolute;
   bottom: 25px;
@@ -45,13 +41,11 @@
   transform: translateX(-50%);
   font-weight: 500;
 
-  // Masqué sur petits écrans pour aérer l'affichage
   @include respond-to-tablet {
     display: none;
   }
 }
 
-// Flèches de navigation (précédent / suivant)
 .slide-prev,
 .slide-next {
   position: absolute;
@@ -64,7 +58,6 @@
   cursor: pointer;
 }
 
-// Icône de la flèche (Material Icons)
 .icon {
   font-size: 84px;
 
@@ -73,7 +66,6 @@
   }
 }
 
-// Position spécifique des flèches
 .slide-prev {
   left: 23px;
 }

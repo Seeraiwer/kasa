@@ -5,22 +5,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;          // Espacement entre les étoiles
-  font-size: 24px;    // Taille par défaut des étoiles
+  gap: 12px; 
+  font-size: 24px; 
 
-  // Version responsive pour petits écrans
   @include respond-to-tablet {
     font-size: 13px;
     gap: 6px;
   }
 }
 
-// Couleur pour les étoiles pleines (actives)
 .star-full {
   color: $main--color;
 }
 
-// Couleur pour les étoiles vides (inactives)
 .star-empty {
   color: #e3e3e3;
 }

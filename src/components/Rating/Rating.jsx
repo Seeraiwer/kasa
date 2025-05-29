@@ -1,14 +1,5 @@
 import "./Rating.scss";
 
-/**
- * Composant Rating — affiche une note sous forme de 5 étoiles,
- * dont un certain nombre sont pleines en fonction de la note fournie.
- *
- * @param {Object} props - Les propriétés du composant.
- * @param {number} props.rating - Nombre d’étoiles pleines à afficher (entre 0 et 5).
- *
- * @returns {JSX.Element} Un composant visuel représentant une note.
- */
 function Rating({ rating }) {
   const stars = [];
 

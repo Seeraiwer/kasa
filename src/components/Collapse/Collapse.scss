@@ -3,11 +3,10 @@
 
 .collapse {
   flex-grow: 1;
-  background-color: #f6f6f673; // Légère transparence
+  background-color: #f6f6f673; 
   border-radius: 5px;
   height: max-content;
 
-  // En-tête cliquable (titre + bouton)
   &__header {
     color: #fff;
     display: flex;
@@ -24,7 +23,6 @@
       padding-block: 4px;
     }
 
-    // Bouton d’ouverture/fermeture (icône fléchée)
     .collapse__button {
       color: #fff;
       border: none;
@@ -35,7 +33,6 @@
       i {
         transition: transform 0.3s ease-out;
 
-        // Rotation de l’icône lorsqu’elle est en mode "fermé"
         &.up {
           transform: rotate(180deg);
         }
@@ -47,9 +44,8 @@
     }
   }
 
-  // Contenu de la section repliable
   &__content {
-    max-height: 0;              // Fermé par défaut
+    max-height: 0;              
     overflow: hidden;
     padding: 0 20px;
     transition: max-height 0.3s ease-out, padding 0.3s ease-out;
@@ -59,13 +55,11 @@
     }
   }
 
-  // État "ouvert" : affiche le contenu avec padding vertical
   &__content--open {
     max-height: max-content;
     padding: 25px 20px 20px 20px;
   }
 
-  // Style spécifique pour les listes internes
   &__content ul {
     display: flex;
     flex-direction: column;
