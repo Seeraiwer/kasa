@@ -11,7 +11,7 @@ function Layout() {
   return (
     <>
       <Header />
-      <main className="main">
+      <main className="layout">
         <div className="spacer">
           <Outlet />
         </div>
@@ -20,6 +20,5 @@ function Layout() {
     </>
   );
 }
-
 
 export default Layout;

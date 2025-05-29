@@ -12,32 +12,34 @@ function Home() {
   return (
     <main>
       <section className="home">
+        {/* Wrapper commun pour bannière et grille */}
         <div className="spacer">
-          <Banner
-            image={image}
-            alt="mer"
-            text="Chez vous, partout et ailleurs"
-          />
-        </div>
+          {/* Bannière de bienvenue */}
+          <div className="home__banner">
+            <Banner
+              image={image}
+              alt="Vue sur la mer"
+              text="Chez vous, partout et ailleurs"
+            />
+          </div>
 
-        {/* Grille de logements */}
-        <div className="home__grid">
-          {loading && (
-            <div className="loader" aria-label="Chargement en cours..."></div>
-          )}
+          {/* Grille de logements */}
+          <div className="home__grid">
+            {loading && (
+              <div className="loader" aria-label="Chargement en cours..."></div>
+            )}
 
-          {!loading && logements && logements.length === 0 && (
-            <div>Il n'y a aucun logement à afficher.</div>
-          )}
+            {!loading && logements?.length === 0 && (
+              <div>Il n'y a aucun logement à afficher.</div>
+            )}
 
-          {error && (
-            <div className="error" role="alert">
-              Erreur : {error.message}
-            </div>
-          )}
+            {error && (
+              <div className="error" role="alert">
+                Erreur : {error.message}
+              </div>
+            )}
 
-          {logements &&
-            logements.map((logement) => (
+            {logements?.map((logement) => (
               <Card
                 key={logement.id}
                 id={logement.id}
@@ -45,6 +47,7 @@ function Home() {
                 image={logement.cover}
               />
             ))}
+          </div>
         </div>
       </section>
     </main>
