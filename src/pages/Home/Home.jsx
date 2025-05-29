@@ -12,9 +12,7 @@ function Home() {
   return (
     <main>
       <section className="home">
-        {/* Wrapper commun pour bannière et grille */}
         <div className="spacer">
-          {/* Bannière de bienvenue */}
           <div className="home__banner">
             <Banner
               image={image}
@@ -23,7 +21,6 @@ function Home() {
             />
           </div>
 
-          {/* Grille de logements */}
           <div className="home__grid">
             {loading && (
               <div className="loader" aria-label="Chargement en cours..."></div>

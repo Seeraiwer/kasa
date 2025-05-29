@@ -6,13 +6,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Lodgment.scss";
 
-// URL vers le fichier JSON contenant les logements
 const LOGEMENTS__PATH = "/data/logements.json";
 
-/**
- * Page de logement individuel — affiche les informations détaillées
- * d'un logement en fonction de son `id` présent dans l'URL.
- */
+
 function Lodgment() {
   const { id } = useParams(); // Récupère l'identifiant dans l'URL
   const navigate = useNavigate();
@@ -81,13 +77,7 @@ function Lodgment() {
   );
 }
 
-/**
- * Utilitaire permettant de forcer un saut de ligne entre chaque mot.
- * Exemple : "Jean Dupont" → "Jean<br/>Dupont"
- *
- * @param {string} string - Nom à formater.
- * @returns {React.Fragment[]} - Liste de fragments React séparés par des sauts de ligne.
- */
+
 function addBrToString(string) {
   return string.split(" ").map((word, index, array) => (
     <React.Fragment key={index}>

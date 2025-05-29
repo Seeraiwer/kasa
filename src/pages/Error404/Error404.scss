@@ -1,7 +1,6 @@
 @import "../../variables/Colors";
 @import "../../variables/Media";
 
-// Variables d’espacement vertical
 $space: 139px;
 $space--mobile: 113px;
 
@@ -14,15 +13,14 @@ $space--mobile: 113px;
   color: $main--color;
   text-align: center;
 
-  gap: $space;              // Espace vertical entre les blocs
-  margin-block: $space;     // Marge haut/bas de la section
+  gap: $space;              
+  margin-block: $space;     
 
   @include respond-to-tablet {
     gap: $space--mobile;
     margin-block: $space--mobile;
   }
 
-  // Titre principal (code 404)
   h1 {
     font-size: 288px;
     font-weight: 700;
@@ -33,7 +31,6 @@ $space--mobile: 113px;
     }
   }
 
-  // Message explicatif
   p {
     font-size: 36px;
 
@@ -42,7 +39,6 @@ $space--mobile: 113px;
     }
   }
 
-  // Lien de retour vers l’accueil
   a {
     text-decoration: underline;
     color: #000;

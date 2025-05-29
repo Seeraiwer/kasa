@@ -8,16 +8,13 @@
   gap: 30px;
   margin-bottom: 38px;
 
-  // Réduction de l’espacement vertical entre les sections sur mobile
   @include respond-to-tablet {
     gap: 20px;
   }
 
-  // Cible chaque composant Collapse présent dans la section
   .collapse {
     width: 82.5%;
 
-    // En responsive, les Collapse prennent toute la largeur
     @include respond-to-tablet {
       width: 100%;
     }
