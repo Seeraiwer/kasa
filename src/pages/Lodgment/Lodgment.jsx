@@ -8,81 +8,79 @@ import "./Lodgment.scss";
 
 const LOGEMENTS__PATH = "/data/logements.json";
 
-
 function Lodgment() {
-  const { id } = useParams(); // Récupère l'identifiant dans l'URL
+  const { id } = useParams();
   const navigate = useNavigate();
   const { loading, data: logements, error } = useFetch(LOGEMENTS__PATH);
   const [logement, setLogement] = useState(null);
 
-  // Recherche du logement correspondant une fois les données chargées
   useEffect(() => {
     if (logements) {
-      const foundLogement = logements.find((logement) => logement.id === id);
-      if (foundLogement) {
-        setLogement(foundLogement);
+      const found = logements.find((l) => l.id === id);
+      if (found) {
+        setLogement(found);
       } else {
-        navigate("/404"); // Redirection vers page 404 si logement introuvable
+        navigate("/404");
       }
     }
   }, [logements, id, navigate]);
 
   if (loading) return <div className="loader" aria-label="Chargement..."></div>;
-  if (error) return <div className="error">Erreur : {error.message}</div>;
+  if (error)   return <div className="error">Erreur : {error.message}</div>;
   if (!logement) return null;
 
   return (
-    <main>
-      <section className="estate">
-        {/* Carrousel d’images du logement */}
+    <section className="estate">
+      {/* ← On ajoute le même wrapper "spacer" que sur Home */}
+      <div className="spacer">
+        {/* Carrousel d’images */}
         <Slideshow images={logement.pictures} title={logement.title} />
 
-        {/* Informations principales du logement */}
+        {/* Infos principales */}
         <div className="container">
           <div className="left">
             <h1 className="estate-title">{logement.title}</h1>
             <p className="estate-location">{logement.location}</p>
             <div className="tags">
-              {logement.tags.map((tag, index) => (
-                <span className="tag" key={index}>
-                  {tag}
-                </span>
+              {logement.tags.map((tag, i) => (
+                <span className="tag" key={i}>{tag}</span>
               ))}
             </div>
           </div>
 
           <div className="right">
-            {/* Informations sur l'hôte avec nom sur plusieurs lignes */}
+            {/* Hôte */}
             <div className="host">
               <p>{addBrToString(logement.host.name)}</p>
-              <img src={logement.host.picture} alt={`Hôte : ${logement.host.name}`} />
+              <img
+                src={logement.host.picture}
+                alt={`Hôte : ${logement.host.name}`}
+              />
             </div>
-
-            {/* Affichage de la note en étoiles */}
+            {/* Note en étoiles */}
             <Rating rating={logement.rating} />
           </div>
         </div>
 
-        {/* Sections repliables (description + équipements) */}
+        {/* Collapses */}
         <div className="collapses">
           <Collapse title="Description">{logement.description}</Collapse>
           <Collapse title="Équipements">
-            {logement.equipments.map((equipment, index) => (
-              <p key={index}>{equipment}</p>
+            {logement.equipments.map((eq, i) => (
+              <p key={i}>{eq}</p>
             ))}
           </Collapse>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }
 
-
-function addBrToString(string) {
-  return string.split(" ").map((word, index, array) => (
-    <React.Fragment key={index}>
+function addBrToString(name) {
+  return name.split(" ").map((word, i, arr) => (
+    <React.Fragment key={i}>
       {word}
-      {index < array.length - 1 && <br />}
+      {i < arr.length - 1 && <br />}
     </React.Fragment>
   ));
 }
