@@ -5,9 +5,9 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  box-sizing: border-box;        
-  padding-inline: 0;             
-  margin: 0 auto;                
+  box-sizing: border-box;
+  padding-inline: 0;
+  margin: 0 auto;
   overflow: hidden;
   border-radius: 25px;
   display: flex;
@@ -26,7 +26,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
 
@@ -44,13 +44,31 @@
   &__text {
     position: absolute;
     color: white;
-    font-size: 36px;
     z-index: 2;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 143%;
+    letter-spacing: 0;
+    vertical-align: bottom;
+    text-align: center;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    2px 2px 4px rgba(0, 0, 0, 0.5);
+
 
     @include respond-to-tablet {
       font-size: 18px;
       text-align: left;
       padding-inline: 16px;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 0;
+      vertical-align: baseline;
     }
   }
 }
