@@ -1,26 +1,25 @@
-@use "../../variables/Media.scss" as *;
-@use "../../variables/Colors.scss" as *;
+@use "../../components/Layout/Layout.scss" as *;
 @use "sass:color";
 
 .header {
   background-color: white;
 
   &__wrapper {
-    width: 1240px;
+    width: 100%;
+    max-width: 1240px;
     height: 68px;
-    margin-inline: auto;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     @include respond-to-tablet {
-      width: 100%;
-      height: auto;
-      flex-direction: column;
-      gap: 12px;
-      padding-inline: 12px;
-      padding-block: 12px;
-      box-sizing: border-box;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: 0 12px;
+    height: 68px;
     }
   }
 

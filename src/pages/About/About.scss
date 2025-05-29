@@ -1,6 +1,4 @@
-@import "../../variables/Colors";
-@import "../../variables/Media";
-
+@use "../../components/Layout/Layout.scss" as *;
 .about {
   display: flex;
   flex-direction: column;

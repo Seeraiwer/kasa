@@ -1,6 +1,4 @@
-@use "../../variables/Media.scss" as *;
-@use "../../variables/Colors.scss" as *;
-
+@use "../../components/Layout/Layout.scss" as *;
 .banner {
   position: relative;
   width: 100%;
@@ -15,8 +13,11 @@
   align-items: center;
 
   @include respond-to-tablet {
+    width: 335px;
     height: 111px;
-  }
+    border: 1px solid #000;
+    border-radius: 10px;
+ }
 
   &--shadow {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -32,7 +33,7 @@
 
   &__image {
     width: 100%;
-    height: 223px;
+    height: 100%;
     object-fit: cover;
     display: block;
 
@@ -44,7 +45,10 @@
   &__text {
     position: absolute;
     color: white;
+    font-weight: 700;
+    font-size: 36px;
     z-index: 2;
+    text-align: center;
 
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -63,12 +67,8 @@
 
     @include respond-to-tablet {
       font-size: 18px;
-      text-align: left;
-      padding-inline: 16px;
-      font-weight: 700;
-      line-height: normal;
-      letter-spacing: 0;
-      vertical-align: baseline;
+      padding-inline: 12px;
+      text-align: center;
     }
   }
 }

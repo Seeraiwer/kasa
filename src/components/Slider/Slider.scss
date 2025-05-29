@@ -1,6 +1,4 @@
-@use "../../variables/Colors.scss" as *;
-@use "../../variables/Media.scss" as *;
-
+@use "../../components/Layout/Layout.scss" as *;
 .slideshow {
   position: relative;
   aspect-ratio: 3; 

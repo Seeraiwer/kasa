@@ -17,11 +17,8 @@ function Lodgment() {
   useEffect(() => {
     if (logements) {
       const found = logements.find((l) => l.id === id);
-      if (found) {
-        setLogement(found);
-      } else {
-        navigate("/404");
-      }
+      if (found) setLogement(found);
+      else navigate("/404");
     }
   }, [logements, id, navigate]);
 
@@ -31,38 +28,37 @@ function Lodgment() {
 
   return (
     <section className="estate">
-      {/* ← On ajoute le même wrapper "spacer" que sur Home */}
       <div className="spacer">
         {/* Carrousel d’images */}
         <Slideshow images={logement.pictures} title={logement.title} />
 
-        {/* Infos principales */}
-        <div className="container">
-          <div className="left">
+        {/* Ligne unique : titre + ville à gauche, host+note à droite */}
+        <div className="header-info">
+          <div className="title-location">
             <h1 className="estate-title">{logement.title}</h1>
             <p className="estate-location">{logement.location}</p>
-            <div className="tags">
-              {logement.tags.map((tag, i) => (
-                <span className="tag" key={i}>{tag}</span>
-              ))}
-            </div>
           </div>
-
-          <div className="right">
-            {/* Hôte */}
-            <div className="host">
-              <p>{addBrToString(logement.host.name)}</p>
+          <div className="host-block">
+            <div className="host-main">
+              <p className="host-name">{addBrToString(logement.host.name)}</p>
               <img
+                className="host-img"
                 src={logement.host.picture}
                 alt={`Hôte : ${logement.host.name}`}
               />
             </div>
-            {/* Note en étoiles */}
-            <Rating rating={logement.rating} />
+            <Rating className="host-rating" rating={logement.rating} />
           </div>
         </div>
 
-        {/* Collapses */}
+        {/* Tags */}
+        <div className="tags">
+          {logement.tags.map((tag, i) => (
+            <span className="tag" key={i}>{tag}</span>
+          ))}
+        </div>
+
+        {/* Sections déroulantes */}
         <div className="collapses">
           <Collapse title="Description">{logement.description}</Collapse>
           <Collapse title="Équipements">

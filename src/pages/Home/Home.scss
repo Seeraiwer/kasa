@@ -1,5 +1,4 @@
-@use "../../variables/Media.scss" as *;
-@use "../../variables/Colors.scss" as *;
+@use "../../components/Layout/Layout.scss" as *;
 
 .home {
   display: flex;
@@ -31,7 +30,7 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 50px;
     max-width: 1240px;
     margin: 0 auto;

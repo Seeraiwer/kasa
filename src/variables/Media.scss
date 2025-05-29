@@ -1,5 +1,0 @@
-@mixin respond-to-tablet {
-  @media screen and (max-width: 768px) {
-    @content;
-  }
-}

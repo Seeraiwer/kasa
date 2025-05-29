@@ -1,6 +1,4 @@
-@import "../../variables/Colors";
-@import "../../variables/Media";
-
+@use "/src/components/Layout/Layout.scss" as *;
 // Placeholder typo commune
 %montserrat-base {
   font-family: "Montserrat", sans-serif;
@@ -11,26 +9,89 @@
 }
 
 .estate {
-  // 1) Titre principal
-  .estate-title {
-    @extend %montserrat-base;
-    color: $main--color;
-    font-size: 36px;
-    margin-bottom: 8px;
-
-    @include respond-to-tablet { font-size: 18px; }
-  }
-
-  // 2) Localisation
-  .estate-location {
-    @extend %montserrat-base;
-    color: #000;
-    font-size: 18px;
-    margin-bottom: 16px;
+  // 2) Header principal : grid 2 colonnes
+  .header-info {
+    display: grid;
+    grid-template-columns: 60% auto;
+    align-items: center;
+    margin-bottom: 2px;
 
     @include respond-to-tablet {
-      font-size: 14px;
-      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 46px;
+    }
+
+    // Titre et ville empilés
+    .title-location {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      margin-bottom: 20px;
+
+      .estate-title {
+        @extend %montserrat-base;
+        color: $main--color;
+        font-size: 36px;
+        margin: 0;
+
+        @include respond-to-tablet {
+          font-size: 18px;
+        }
+      }
+
+      .estate-location {
+        @extend %montserrat-base;
+        color: #000;
+        font-size: 18px;
+        margin: 0;
+
+        @include respond-to-tablet {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .host-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+
+      .host-main {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .host-name {
+        @extend %montserrat-base;
+        color: $main--color;
+        font-size: 18px;
+        text-align: right;
+        margin: 0;
+
+        @include respond-to-tablet {
+          font-size: 14px;
+        }
+      }
+
+      .host-img {
+        border-radius: 50%;
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+
+        @include respond-to-tablet {
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      .host-rating {
+        margin-top: 4px;
+      }
     }
   }
 
@@ -64,88 +125,26 @@
     }
   }
 
-  // 4) Container infos / hôte + note
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 24px;
+  // 4) Sections déroulantes
+.collapses {
+  display: flex;
+  gap: 76px;
+  
 
-    @include respond-to-tablet {
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .left {
-      width: 60%;
-      @include respond-to-tablet { width: 100%; }
-    }
-
-    .right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 16px;
-
-      @include respond-to-tablet {
-        flex-direction: row-reverse;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      // 4.1) Hôte
-      .host {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
-
-        p {
-          @extend %montserrat-base;
-          color: $main--color;
-          font-size: 18px;
-          text-align: right;
-        }
-
-        img {
-          border-radius: 50%;
-          width: 64px;
-          height: 64px;
-          object-fit: cover;
-
-          @include respond-to-tablet {
-            width: 32px;
-            height: 32px;
-          }
-        }
-      }
-
-      // 4.2) Note (le composant Rating)
-      .rating {
-        display: flex;
-        gap: 4px;
-      }
-    }
+  @include respond-to-tablet {
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 0 12px;  
   }
 
-  // 5) Collapses “Description” + “Équipements”
-  .collapses {
-    display: flex;
-    gap: 76px;
-    margin: 0 0 50px;
+  .collapse {
+    width: 50%;
 
     @include respond-to-tablet {
-      flex-direction: column;
-      gap: 20px;
-      margin: 0 0 27px;
-    }
-
-    .collapse {
-      width: 50%;
-
-      @include respond-to-tablet {
-        width: 100%;
-      }
+      width: 100%;
     }
   }
 }
+
+  }
+

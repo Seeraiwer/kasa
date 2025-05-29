@@ -1,14 +1,35 @@
-@use "../../variables/Media.scss" as *;
+/* 1) Import de la police Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
+/* 2) Variables globales */
+$main--color: #ff6060;
+
+/* 3) Placeholder typographique Montserrat */
+%montserrat-base {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  line-height: 143%;
+  letter-spacing: 0;
+  vertical-align: bottom;
+}
+
+/* 4) Mixin responsive tablette */
+@mixin respond-to-tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+/* 5) Structure principale */
 .layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
 }
 
 .main {
   flex: 1 0 auto;
-
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
@@ -19,9 +40,11 @@
   }
 }
 
+/* 6) Conteneur de marges horizontales */
 .spacer {
   width: 100%;
-  padding-inline: 20px;
+  max-width: 1240px;
+  margin: 0 auto;
   box-sizing: border-box;
 
   @include respond-to-tablet {

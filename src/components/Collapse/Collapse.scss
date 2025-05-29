@@ -1,6 +1,4 @@
-@use "../../variables/Colors.scss" as *;
-@use "../../variables/Media.scss" as *;
-
+@use "../../components/Layout/Layout.scss" as *;
 .collapse {
   flex-grow: 1;
   background-color: #f6f6f673; 
