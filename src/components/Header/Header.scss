@@ -1,51 +1,101 @@
-@use "../../variables/Colors.scss" as *;
 @use "../../variables/Media.scss" as *;
+@use "../../variables/Colors.scss" as *;
+@use "sass:color";
 
 .header {
-  width: 100%;
-  margin-block: 45px 50px;
+  background-color: white;
 
-  // Responsive : réduit la hauteur du header
-  @include respond-to-tablet {
-    margin-block: 20px 27px;
-  }
-
-  // Appliquer le layout flex à la div .spacer
-  .spacer {
+  &__wrapper {
+    width: 1240px;
+    height: 68px;
+    margin-inline: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 68px;
 
     @include respond-to-tablet {
-      height: 46.88px;
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      gap: 12px;
+      padding-inline: 12px;
+      padding-block: 12px;
+      box-sizing: border-box;
+    }
+  }
 
-      a,
-      img {
-        height: 100%;
-      }
+  &__logo {
+    height: 40px;
+
+    @include respond-to-tablet {
+      height: 32px;
     }
   }
 
   &__nav {
     display: flex;
-    list-style: none;
-    font-size: 24px;
-    gap: 57px;
+    gap: 32px;
 
     @include respond-to-tablet {
-      gap: 26px;
-      text-transform: uppercase;
-      font-size: 12px;
+      gap: 20px;
+    }
+  }
+
+  &__nav-link {
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 34px;
+    position: relative;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 143%;
+    letter-spacing: 0;
+    text-align: right;
+    vertical-align: bottom;
+    color: black;
+    text-decoration: none;
+
+    // Encapsule le texte
+    span {
+      display: inline-block;
+      position: relative;
+
+      // Trait sous le mot actif
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        border-radius: 2px;
+      }
     }
 
-    & a {
-      text-decoration: none;
-      color: #000;
+    // Affiche le trait seulement si NavLink est actif
+    &.active span::after {
+      display: block;
+    }
 
-      &.active {
-        text-decoration: underline;
-      }
+    // lien inactif : cache le soulignement
+    &:not(.active) span::after {
+      display: none;
+    }
+
+    &:hover {
+      color: color.adjust(black, $lightness: -10%);
+    }
+
+    &--accueil {
+      width: 136px;
+    }
+
+    &--apropos {
+      width: 116px;
     }
   }
 }
