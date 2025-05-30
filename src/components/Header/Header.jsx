@@ -5,7 +5,8 @@ import "./Header.scss";
 function Header() {
   return (
     <header className="header">
-      <div className="header__wrapper">
+      {/* Ajout de spacer ici */}
+      <div className="spacer header__wrapper">
         <Link to="/" className="header__logo-link">
           <img src={logo} alt="Logo de Kasa" className="header__logo" />
         </Link>

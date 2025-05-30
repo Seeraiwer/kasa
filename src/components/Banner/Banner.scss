@@ -1,4 +1,5 @@
 @use "../../components/Layout/Layout.scss" as *;
+
 .banner {
   position: relative;
   width: 100%;
@@ -13,10 +14,7 @@
   align-items: center;
 
   @include respond-to-tablet {
-    width: 335px;
     height: 111px;
-    border: 1px solid #000;
-    border-radius: 10px;
  }
 
   &--shadow {
@@ -66,9 +64,10 @@
 
 
     @include respond-to-tablet {
-      font-size: 18px;
-      padding-inline: 12px;
-      text-align: center;
+      font-size: 24px;
+      padding: 16px;
+      text-shadow: none;
+      filter: none;
     }
   }
 }
