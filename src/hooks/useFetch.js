@@ -1,19 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRefSync } from "./useRefSync.js";
 
-/**
- * Hook personnalisé pour effectuer des requêtes HTTP avec `fetch`
- * et gérer les états `loading`, `data`, et `error`.
- *
- * @param {string} url - L’URL de la ressource à charger.
- * @param {Object} [options] - Options facultatives de la requête (ex: headers).
- *
- * @returns {Object} - Un objet contenant :
- *   - {boolean} loading - Indique si la requête est en cours.
- *   - {any} data - Données JSON retournées ou null.
- *   - {Error|null} error - Erreur capturée en cas d’échec.
- *   - {Function} setData - Permet de modifier manuellement les données.
- */
+
 export function useFetch(url, options) {
   const [loading, setLoading] = useState(true);     // État de chargement
   const [data, setData] = useState(null);           // Données récupérées

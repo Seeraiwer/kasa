@@ -40,10 +40,15 @@ $main--color: #ff6060;
   max-width: 1240px;
   margin: 0 auto;
   box-sizing: border-box;
+  padding-top: 0;
+  margin-top: 0;
 
   @include respond-to-tablet {
     padding-inline: 12px;
   }
+}
+.header {
+  margin-bottom: 0; 
 }
 
 /* 6) Conteneur de marges horizontales */
@@ -52,6 +57,8 @@ $main--color: #ff6060;
   max-width: 1240px;
   margin: 0 auto;
   box-sizing: border-box;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
 
   @include respond-to-tablet {
     padding-inline: 4px; 
