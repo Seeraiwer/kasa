@@ -3,6 +3,7 @@
 
 .header {
   background-color: white;
+  margin-bottom: 0;
 
   &__wrapper {
     max-width: 1240px;
@@ -13,34 +14,18 @@
     align-items: center;
     padding: 0;
     flex-wrap: nowrap;
-
-    @include respond-to-tablet {
-      padding: 12px;
-      gap: 12px;
-    }
+    margin-bottom: 0;
+    padding-bottom: 0;
+    gap: 0;
   }
 
   &__logo {
     height: 40px;
-
-    @include respond-to-tablet {
-      height: 32px;
-    }
   }
 
   &__nav {
     display: flex;
     gap: 32px;
-
-    @include respond-to-tablet {
-      gap: 26px;
-      width: 190px;
-      height: 17px;
-      text-transform: uppercase;
-      align-items: center;
-      justify-content: space-between;
-      margin-left: 32px;
-    }
   }
 
   &__nav-link {
@@ -48,14 +33,17 @@
     align-items: center;
     justify-content: center;
     height: 34px;
-    font: 500 16px/143% "Montserrat", sans-serif;
-    color: black;
     text-decoration: none;
     position: relative;
+    color: black;
 
-@include respond-to-tablet {
-  font-size: 12px;
-}
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 143%;
+    letter-spacing: 0%;
+    text-align: right;
+    vertical-align: bottom;
 
     span {
       position: relative;
@@ -81,4 +69,39 @@
       color: color.adjust(black, $lightness: -10%);
     }
   }
+}
+
+@include respond-to-tablet {
+  .header {
+    margin-bottom: 0;
+    
+  }
+
+  .header__wrapper {
+    padding: 12px;
+    gap: 12px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .header__logo {
+    height: 32px;
+  }
+
+  .header__nav {
+    gap: 26px;
+    width: 190px;
+    height: 17px;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 32px;
+  }
+
+  .header__nav-link {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  
 }

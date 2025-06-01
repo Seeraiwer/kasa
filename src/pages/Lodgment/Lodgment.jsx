@@ -37,48 +37,56 @@ function Lodgment() {
   if (!logement) return null;
 
   return (
-  <section className="estate">
-    <div className="spacer">
-      {/* 1) Slideshow / Carousel of pictures */}
-      <Slideshow images={logement.pictures} title={logement.title} />
+    <section className="estate">
+      <div className="spacer">
+        {/* 1) Carrousel d’images */}
+        <Slideshow images={logement.pictures} title={logement.title} />
 
-      {/* 2) Header info: title + location on the left; host + rating on the right */}
-      <div className="header-info">
-        <div className="title-location">
-          <h1 className="estate-title">{logement.title}</h1>
-          <p className="estate-location">{logement.location}</p>
-        </div>
-
-        <div className="host-block">
-          <div className="host-main">
-            <p className="host-name">
-              {addBrToString(logement.host.name)}
-            </p>
-            <img
-              className="host-img"
-              src={logement.host.picture}
-              alt={`Hôte : ${logement.host.name}`}
-            />
+        {/* 2) Informations principales */}
+        <div className="header-info">
+          {/* Titre + localisation */}
+          <div className="title-location">
+            <h1 className="estate-title">{logement.title}</h1>
+            <p className="estate-location">{logement.location}</p>
           </div>
-          <Rating className="host-rating" rating={logement.rating} />
+
+          {/* Tags */}
+          <div className="tags">
+            {logement.tags.map((tag, i) => (
+              <span className="tag" key={i}>{tag}</span>
+            ))}
+          </div>
+
+          {/* Hôte + Note */}
+          <div className="host-block">
+            <div className="host-main">
+              <p className="host-name">
+                {addBrToString(logement.host.name)}
+              </p>
+              <img
+                className="host-img"
+                src={logement.host.picture}
+                alt={`Hôte : ${logement.host.name}`}
+              />
+            </div>
+            <Rating className="host-rating" rating={logement.rating} />
+          </div>
+        </div>
+
+        {/* 3) Sections déroulantes */}
+        <div className="collapses">
+          <Collapse title="Description">
+            {logement.description}
+          </Collapse>
+          <Collapse title="Équipements">
+            {logement.equipments.map((eq, i) => (
+              <p key={i}>{eq}</p>
+            ))}
+          </Collapse>
         </div>
       </div>
-
-      {/* 3) Collapsible sections: description + equipments */}
-      <div className="collapses">
-        <Collapse title="Description">
-          {logement.description}
-        </Collapse>
-        <Collapse title="Équipements">
-          {logement.equipments.map((eq, i) => (
-            <p key={i}>{eq}</p>
-          ))}
-        </Collapse>
-      </div>
-    </div>
-  </section>
-);
-
+    </section>
+  );
 }
 
 /**
