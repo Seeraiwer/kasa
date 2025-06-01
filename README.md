@@ -1,18 +1,18 @@
-# 🏡 Kasa – Application de location immobilière (React)
+# Kasa – Application de location immobilière (React)
 
 Bienvenue sur **Kasa**, un site vitrine de locations immobilières développé avec **React**. Ce projet met en avant la création d'une SPA moderne avec composants réutilisables, gestion de routes, SCSS modulaire et hooks personnalisés.
 
 ---
 
-## 🚀 Démo
+## Démo
 
-👉 _Démo locale uniquement_ (aucun back-end)  
-📁 Données : `public/data/logements.json`  
-🌐 Navigation 100% client via `react-router-dom`
+_Démo locale uniquement_ (aucun back-end)  
+Données : `public/data/logements.json`  
+Navigation 100% client via `react-router-dom`
 
 ---
 
-## 🛠️ Technologies utilisées
+## Technologies utilisées
 
 - [React 18](https://react.dev/)
 - [React Router DOM](https://reactrouter.com/)
@@ -22,7 +22,7 @@ Bienvenue sur **Kasa**, un site vitrine de locations immobilières développé a
 
 ---
 
-## ⚙️ Installation et lancement
+## Installation et lancement
 
 1. **Cloner le dépôt**
    ```bash
@@ -44,5 +44,3 @@ Bienvenue sur **Kasa**, un site vitrine de locations immobilières développé a
    ```
    http://localhost:5173
    ```
-
-> ⚠️ Ce projet utilise **Vite** pour un environnement de développement rapide.
