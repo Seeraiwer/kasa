@@ -11,8 +11,10 @@ import "./About.scss"; // Feuille de style spécifique à cette page
 function About() {
   return (
     <section className="about">
+        <div className="spacer">
       {/* Bannière d'en-tête sans ombre et sans texte */}
       <Banner image={image} alt="montagnes" shadow={false} />
+  </div>
 
       {/* Section "Fiabilité" */}
       <Collapse title="Fiabilité">
