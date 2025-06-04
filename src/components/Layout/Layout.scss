@@ -1,17 +1,13 @@
-// Reset box-sizing
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-// 1) Import de la police Montserrat
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
-// 2) Variables globales
 $main--color: #ff6060;
 
-// 3) Placeholder typographique Montserrat
 %montserrat-base {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
@@ -20,14 +16,6 @@ $main--color: #ff6060;
   vertical-align: bottom;
 }
 
-// 4) Mixin responsive tablette
-@mixin respond-to-tablet {
-  @media screen and (max-width: 768px) {
-    @content;
-  }
-}
-
-// 5) Structure principale
 .layout {
   display: flex;
   flex-direction: column;
@@ -51,31 +39,40 @@ $main--color: #ff6060;
 .spacer {
   width: 100%;
   max-width: 1240px;
-  margin: 24px auto 0 auto;
+  margin: 24px auto;
   padding: 0;
   box-sizing: border-box;
 }
 
-// 6) Responsive
+.spacer--banner {
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+@mixin respond-to-tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
 @include respond-to-tablet {
-  .layout {
-  }
-
-  .header {
-    margin-bottom: 0;
-  }
-
   .main {
-    margin-top: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-inline: 12px;
+    padding: 0 12px;
   }
 
-  .spacer {
-    margin-top: 4px;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-inline: 4px;
+  .spacer,
+  .spacer--banner {
+    padding: 0 12px; 
+    margin-top: 12px;
+  }
+
+  .spacer--banner {
+    margin-bottom: 12px;
+  }
+
+  .banner {
+    width: calc(100% - 24px); 
+    border-radius: 15px;
+    margin: 0 auto;
   }
 }

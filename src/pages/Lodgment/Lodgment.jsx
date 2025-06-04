@@ -89,10 +89,7 @@ function Lodgment() {
   );
 }
 
-/**
- * Fonction utilitaire :
- * Insère un saut de ligne entre chaque mot d’un nom complet (ex: "Jane Doe")
- */
+
 function addBrToString(name) {
   return name.split(" ").map((word, i, arr) => (
     <React.Fragment key={i}>

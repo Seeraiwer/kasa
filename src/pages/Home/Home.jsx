@@ -24,46 +24,43 @@ function Home() {
 
   return (
     <section className="home">
-      {/* Conteneur avec marges internes */}
-      <div className="spacer">
-        {/* Section de la bannière d’accueil */}
-        <div className="home__banner">
-          <Banner
-            image={image}
-            alt="Vue sur la mer"
-            text="Chez vous, partout et ailleurs"
+      {/* Bannière d’accueil avec espacement spécifique */}
+      <div className="spacer spacer--banner">
+        <Banner
+          image={image}
+          alt="Vue sur la mer"
+          text="Chez vous, partout et ailleurs"
+        />
+      </div>
+
+      {/* Grille des cartes de logements */}
+      <div className="home__grid">
+        {/* Affiche un loader pendant le chargement */}
+        {loading && (
+          <div className="loader" aria-label="Chargement en cours..."></div>
+        )}
+
+        {/* Message si aucun logement n’est disponible */}
+        {!loading && logements?.length === 0 && (
+          <div>Il n'y a aucun logement à afficher.</div>
+        )}
+
+        {/* Affiche l’erreur en cas d’échec du chargement */}
+        {error && (
+          <div className="error" role="alert">
+            Erreur : {error.message}
+          </div>
+        )}
+
+        {/* Affiche chaque logement sous forme de carte */}
+        {logements?.map((logement) => (
+          <Card
+            key={logement.id}
+            id={logement.id}
+            title={logement.title}
+            image={logement.cover}
           />
-        </div>
-
-        {/* Grille des cartes de logements */}
-        <div className="home__grid">
-          {/* Affiche un loader pendant le chargement */}
-          {loading && (
-            <div className="loader" aria-label="Chargement en cours..."></div>
-          )}
-
-          {/* Message si aucun logement n’est disponible */}
-          {!loading && logements?.length === 0 && (
-            <div>Il n'y a aucun logement à afficher.</div>
-          )}
-
-          {/* Affiche l’erreur en cas d’échec du chargement */}
-          {error && (
-            <div className="error" role="alert">
-              Erreur : {error.message}
-            </div>
-          )}
-
-          {/* Affiche chaque logement sous forme de carte */}
-          {logements?.map((logement) => (
-            <Card
-              key={logement.id}
-              id={logement.id}
-              title={logement.title}
-              image={logement.cover}
-            />
-          ))}
-        </div>
+        ))}
       </div>
     </section>
   );
